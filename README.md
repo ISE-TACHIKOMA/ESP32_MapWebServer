@@ -36,25 +36,25 @@ Leaflet（JavaScript地図ライブラリ）を **SDカードからローカル�
 
 # 📂 SD カード構成（必ずこの通りに配置）
 
+```plaintext
 /sdcard/
 ├── leaflet/
-│ ├── leaflet.js
-│ ├── leaflet.css
-│ └── images/
-│ ├── marker-icon.png
-│ ├── marker-shadow.png
-│ ├── layers.png
-│ └── layers-2x.png
+│   ├── leaflet.js
+│   ├── leaflet.css
+│   └── images/
+│       ├── marker-icon.png
+│       ├── marker-shadow.png
+│       ├── layers.png
+│       └── layers-2x.png
 ├── tiles/
-│ ├── 5/
-│ ├── 6/
-│ ├── 7/
-│ ├── ...
-│ └── 12/
+│   ├── 5/
+│   ├── 6/
+│   ├── 7/
+│   ├── ...
+│   └── 12/
 └── gps_log.csv （自動生成されます）
+```
 
-python
-コードをコピーする
 
 ## Leaflet の取得方法
 Leaflet 公式 ZIP をダウンロードして SD カードへコピーします：
@@ -119,50 +119,50 @@ def main():
 
 if __name__ == "__main__":
     main()
-🧭 ESP32 側スケッチ概要
+
+```
+# 🧭 ESP32 側スケッチ概要
 主要エンドポイント
 パス	内容
 /	地図ページ（Leaflet）
 /position	疑似GPSの緯度経度 JSON
 /tiles/...	地図タイル PNG
 /leaflet/...	Leaflet.js / CSS / image
-
 疑似GPSの挙動
+
 琵琶湖中央から開始
 
 毎秒 ±10m程度ランダム移動
 
 /position で以下を返す：
-
-json
-コードをコピーする
+```json
 {
   "lat": 35.250123,
   "lon": 136.001234,
   "time": 123
 }
-💻 使い方
+```
+
+# 💻 使い方
 1. ESP32 にスケッチを書き込む
+
 Arduino IDE / PlatformIO でビルドして書き込み。
 
 2. ESP32 に接続
 SSID	ESP32_MAP
 Password	12345678
-
 3. ブラウザでアクセス
-cpp
-コードをコピーする
+```cpp
 http://192.168.4.1
-Leaflet の地図が表示され、赤いマーカーが動き始めます。
+```
 
-📸 動作イメージ（スクリーンショット例）
-※ 必要なら画像を貼る場所：
+# 📸 動作イメージ（スクリーンショット例）
+![スクリーンショット](/docs/demo.png)
+![スクリーンショット2](/docs/demo2.png)
 
-bash
-コードをコピーする
-docs/demo.png
-🔧 技術構成
+# 🔧 技術構成
 使用ライブラリ
+
 ESP32 WiFi
 
 WebServer
@@ -174,13 +174,15 @@ Leaflet.js
 HTML5 + JavaScript
 
 通信方式
+
 HTTP
 
 JSON
 
 SD ファイルストリーム
 
-🔮 拡張案（Future Work）
+# 🔮 拡張案（Future Work）
+
 本物の GPS モジュール（NEO-6M / ZED-F9P 等）へ接続
 
 LoRa / LTE（SIM7080G）で位置共有
@@ -193,8 +195,10 @@ LoRa / LTE（SIM7080G）で位置共有
 
 複数デバイス同時表示
 
-📜 License
+# 📜 License
+
 MIT License
 
-👤 Author
-Rin Yoshino
+# 👤 Author
+
+ISE_TACHIKOMA
